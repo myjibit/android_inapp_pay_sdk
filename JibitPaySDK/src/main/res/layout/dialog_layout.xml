@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="32dp"
+    android:layout_marginRight="32dp"
+    android:background="@drawable/bg_white"
+    android:layoutDirection="ltr"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <jibit.pay.sdk.views.MyTextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginTop="4dp"
+            android:gravity="right|center"
+            android:text="نصب نرم افزار"
+            android:textColor="@color/jibit_dark_gray"
+            android:textSize="16sp" />
+
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="4dp"
+            android:padding="6dp"
+            android:src="@drawable/icon" />
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_margin="4dp"
+        android:background="@color/jibit_dark_gray" />
+
+    <jibit.pay.sdk.views.MyTextView
+        android:id="@+id/msg"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:gravity="right|center"
+        android:text="برای استفاده از جیبیت، ابتدا آن را نصب نمایید!"
+        android:textColor="@color/jibit_dark_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <jibit.pay.sdk.views.MyButton
+            android:id="@+id/install"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:background="#3eb7d9"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:text=" نصب "
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
