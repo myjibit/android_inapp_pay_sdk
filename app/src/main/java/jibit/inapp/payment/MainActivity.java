@@ -23,41 +23,29 @@ public class MainActivity extends AppCompatActivity {
     PayButtonWide btnWide;
     PayButtonSmall btnSmall;
 
+    String orderID = "2000";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bind();
 
-
         btnSmall.setOnClickListener(V -> {
-            btnSmall.setEnable(false);
+            start();
         });
 
         btnWide.setOnClickListener(V -> {
-            btnWide.setEnable(true);
-
-            //just order id
-            //remove other fields
-            JibitPayment.
-                    with(mContext).
-                    amount(Integer.parseInt((amount.getText().length() > 0 ? amount.getText().toString() : "0"))).
-                    merchantID((merchantid.getText().length() > 0 ? merchantid.getText().toString() : "")).
-                    transActionID("fc330523").
-                    callBackkURL("jibitpay://payed").
-                    response((responseCode, message) -> Log.d(TAG, "response: " + responseCode + " " + message)).
-                    build();
-
+            start();
         });
+    }
 
-
-        findViewById(R.id.openDeep).setOnClickListener(V -> {
-            String address = "https://pay.jibit.mobi/pd?m=7751&n=%D9%85%D8%B4%D8%A7%DB%8C%D8%AE&a=1000&u=null&p=null&d=null";
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse(address));
-            startActivity(intent);
-
-        });
+    void start() {
+        JibitPayment.
+                with(mContext).
+                orderID(orderID).
+                response((responseCode, message) -> Log.d(TAG, "response: " + responseCode + " " + message)).
+                build();
     }
 
     void bind() {
