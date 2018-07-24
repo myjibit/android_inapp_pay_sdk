@@ -19,7 +19,7 @@ import jibit.pay.sdk.views.PayButtonWide;
 public class MainActivity extends AppCompatActivity {
     Context mContext = this;
     String TAG = "pay_";
-    EditText amount, merchantid;
+    EditText amount, orderid;
     PayButtonWide btnWide;
     PayButtonSmall btnSmall;
 
@@ -43,14 +43,14 @@ public class MainActivity extends AppCompatActivity {
     void start() {
         JibitPayment.
                 with(mContext).
-                orderID(orderID).
+                orderID(orderid.getText().toString()).
                 response((responseCode, message) -> Log.d(TAG, "response: " + responseCode + " " + message)).
                 build();
     }
 
     void bind() {
         amount = findViewById(R.id.amount);
-        merchantid = findViewById(R.id.merchantid);
+        orderid = findViewById(R.id.orderid);
         btnWide = findViewById(R.id.btnWide);
         btnSmall = findViewById(R.id.btnSmall);
     }

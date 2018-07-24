@@ -52,16 +52,15 @@ public class JibitPayment {
                 if (!Utils.isJibitInstalled(mContext)) {
                     BaseDialog dialog = new BaseDialog(mContext);
                     dialog.show();
-                } else {
-                    String address = "https://pay.jibit.mobi/pay_sdk?orderid=" + orderID;
+                } else if (orderID.length() > 0) {
+                    String address = "jibit://pay_sdk?orderid=" + orderID;
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse(address));
                     mContext.startActivity(intent);
-                }
-            else
-                return;
+                } else
+                    return;
 
-            new JibitPayment( );
+            new JibitPayment();
         }
     }
 
