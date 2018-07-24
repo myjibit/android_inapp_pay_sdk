@@ -13,7 +13,6 @@ import android.view.View;
 import jibit.pay.sdk.views.MyButton;
 import jibit.pay.sdk.views.MyTextView;
 
-
 public class BaseDialog {
     private final View dialogView;
     private AlertDialog dialog;
@@ -41,6 +40,7 @@ public class BaseDialog {
         });
 
     }
+
 
     private void openGooglePlay(Context mContext) {
         try {

@@ -1,15 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="12dp"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/show"
-        android:layout_width="300dp"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Show" />
+        android:text="amount" />
 
-</RelativeLayout>
+    <EditText
+        android:id="@+id/amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="merchant ID" />
+
+    <EditText
+        android:id="@+id/merchantid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <jibit.pay.sdk.views.PayButtonWide
+        android:id="@+id/btnWide"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:enabled="false" />
+
+    <jibit.pay.sdk.views.PayButtonSmall
+        android:id="@+id/btnSmall"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        app:enabled="true" />
+
+    <Button
+        android:id="@+id/openDeep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Open DeepLink" />
+
+</LinearLayout>

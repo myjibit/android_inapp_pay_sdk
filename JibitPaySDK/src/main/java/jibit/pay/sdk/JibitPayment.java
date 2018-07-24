@@ -3,6 +3,9 @@ package jibit.pay.sdk;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+
+import java.net.URLEncoder;
 
 public class JibitPayment {
 
@@ -12,11 +15,11 @@ public class JibitPayment {
         int amount = builder.amount;
         JibitResponse response = builder.response;
         String transActionID = builder.transActionID;
-        String callBackDeepLinkURL = builder.callBackDeepLinkURL;
+        String callBackURL = builder.callBackURL;
     }
 
-    public static Builder builder() {
-        return new Builder();
+    public static Builder with(Context val) {
+        return new Builder(val);
     }
 
 
@@ -26,9 +29,10 @@ public class JibitPayment {
         private JibitResponse response;
         private String transActionID;
         private int amount = 0;
-        private String callBackDeepLinkURL;
+        private String callBackURL;
 
-        private Builder() {
+        private Builder(Context val) {
+            mContext = val;
         }
 
         public Builder with(Context val) {
@@ -56,8 +60,8 @@ public class JibitPayment {
             return this;
         }
 
-        public Builder callBackDeepLinkURL(String val) {
-            callBackDeepLinkURL = val;
+        public Builder callBackkURL(String val) {
+            callBackURL = val;
             return this;
         }
 
@@ -72,7 +76,7 @@ public class JibitPayment {
                     response.onResponse(401, "Amount is null");
                     return null;
                 }
-                if (this.merchantID == null) {
+                if (this.merchantID == null || this.merchantID.length() == 0) {
                     response.onResponse(402, "Merchant ID is null");
                     return null;
                 }
@@ -87,8 +91,19 @@ public class JibitPayment {
                     BaseDialog dialog = new BaseDialog(mContext);
                     dialog.show();
                 } else {
-                    Intent intent = new Intent(Intent.ACTION_MAIN);
-                    intent.setComponent(new ComponentName(Cons.jibitAppID, Cons.jibitDestinationActivity));
+                    String address = "https://pay.jibit.mobi/pd?m=" + merchantID + "&n=&a=" + amount + "&u=null&p=null&d=null";
+
+                    if (callBackURL.length() > 0)
+                        try {
+                            String query = URLEncoder.encode(callBackURL, "utf-8");
+                            address += "&callback=" + query;
+                        } catch (Exception e) {
+                            //
+                        }
+
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(address));
+
                     mContext.startActivity(intent);
                 }
             else
