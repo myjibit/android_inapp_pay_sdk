@@ -31,7 +31,7 @@
         android:id="@+id/orderid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="QYM627JXS3YCIJFH6SJ4" />
+        android:text="F1DZ2P8XO27ZQIQQD4KF" />
 
 
     <jibit.pay.sdk.views.PayButtonWide

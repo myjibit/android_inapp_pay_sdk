@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
     PayButtonWide btnWide;
     PayButtonSmall btnSmall;
 
-    String orderID = "2000";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

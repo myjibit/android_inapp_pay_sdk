@@ -43,7 +43,7 @@ public class JibitPayment {
                     return;
                 }
                 if (this.orderID == null) {
-                    response.onResponse(403, "orderID ID is null");
+                    response.onResponse(401, "orderID ID is null");
                     return;
                 }
             }
@@ -56,7 +56,13 @@ public class JibitPayment {
                     String address = "jibit://pay_sdk?orderid=" + orderID;
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse(address));
-                    mContext.startActivity(intent);
+                    try{
+                        mContext.startActivity(intent);
+                    }catch (Exception e){
+                        response.onResponse(402, "Error in opening Jibit,Jibit Version is old");
+                        //jibit app installed but not opened yet
+                    }
+
                 } else
                     return;
 
